@@ -1,0 +1,9 @@
+{
+  "trigger_conditions": [
+    "task_type=target_prioritization",
+    "error_contains=Disease extraction returned wrong disease"
+  ],
+  "skill_name": "target_prioritization",
+  "fallback_tool": "ARP_PIPELINE",
+  "test_command": "python -m pytest target_prioritization_test.py"
+}

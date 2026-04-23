@@ -1,0 +1,15 @@
+{
+  "name": "target_prioritization_29657c",
+  "description": "Fix for target_prioritization: \uc624\ub958 \ubc1c\uc0dd: Disease extraction returned wrong disease",
+  "trigger_conditions": [
+    "target_prioritization"
+  ],
+  "procedure": "# Skill: target_prioritization\n\n## Problem\n\uc624\ub958 \ubc1c\uc0dd: Disease extraction returned wrong disease\n\n## Context\n- Task Type: target_prioritization\n- Parameters: {\n  \"disease\": \"masld\",\n  \"query\": \"MASLD drug targets\"\n}\n\n## Procedure\n\n### Step 1: Verify Input\nCheck that all required parameters are present and valid.\n\n### Step 2: Route to Optimal Tool\nBased on task type:\n- target_prioritization -> ARP_PIPELINE\n- llm_analysis -> GROQ_LLAMA\n- bioactivity_data -> CHEMBL_API\n\n### Step 3: Execute with Fallback\nIf primary tool fails, use fallback chain.\n\n### Step 4: Validate Output\nCheck that output matches expected schema.\n\n## Verification\nRun: `python -m pytest target_prioritization_test.py -v`\n",
+  "script_path": "skills/orchestration-skills/target_prioritization_29657c/script.py",
+  "test_path": "skills/orchestration-skills/target_prioritization_29657c/test_skill.py",
+  "resolver_trigger": "task_type=target_prioritization",
+  "created_at": "2026-04-23T09:12:38.608358",
+  "failure_count": 0,
+  "success_count": 0,
+  "last_failure": null
+}

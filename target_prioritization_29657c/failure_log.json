@@ -1,0 +1,13 @@
+{
+  "task_type": "target_prioritization",
+  "task_params": {
+    "disease": "masld",
+    "query": "MASLD drug targets"
+  },
+  "error_message": "Disease extraction returned wrong disease",
+  "context": {
+    "plan_id": "test123",
+    "attempt": 1
+  },
+  "timestamp": "2026-04-23T09:12:38.608027"
+}
