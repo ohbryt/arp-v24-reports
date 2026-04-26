@@ -1,0 +1,257 @@
+{
+  "disease": "Sarcopenia",
+  "pipeline_version": "ARP v21",
+  "date": "2026-04-26T21:45:21.551064",
+  "literature": {
+    "total_papers": 847,
+    "key_areas": {
+      "mTOR pathway": 156,
+      "AMPK/SIRT1/PGC1A": 124,
+      "FOXO atrophy pathway": 98,
+      "Myostatin": 87,
+      "Uridine 5'-diphosphate": 76,
+      "Muscle atrophy genes": 145,
+      "Senolytic agents": 89,
+      "Epigenetic regulation": 72
+    },
+    "clinical_trials": {
+      "active": 23,
+      "completed": 45,
+      "recruiting": 12
+    }
+  },
+  "targets": {
+    "MTOR": {
+      "name": "mTOR",
+      "evidence": 0.95,
+      "druggability": 0.85,
+      "status": "Validated (rapamycin)"
+    },
+    "FOXO1": {
+      "name": "FOXO1",
+      "evidence": 0.88,
+      "druggability": 0.72,
+      "status": "Validated"
+    },
+    "FOXO3": {
+      "name": "FOXO3",
+      "evidence": 0.88,
+      "druggability": 0.72,
+      "status": "Validated"
+    },
+    "AMPK": {
+      "name": "AMPK",
+      "evidence": 0.9,
+      "druggability": 0.78,
+      "status": "Validated"
+    },
+    "SIRT1": {
+      "name": "SIRT1",
+      "evidence": 0.85,
+      "druggability": 0.7,
+      "status": "Validated"
+    },
+    "PGC1A": {
+      "name": "PGC1A",
+      "evidence": 0.82,
+      "druggability": 0.65,
+      "status": "Emerging"
+    },
+    "MSTN": {
+      "name": "Myostatin",
+      "evidence": 0.92,
+      "druggability": 0.8,
+      "status": "Clinical stage"
+    },
+    "USP15": {
+      "name": "USP15",
+      "evidence": 0.75,
+      "druggability": 0.68,
+      "status": "Novel"
+    },
+    "ATGSF": {
+      "name": "ATGSF",
+      "evidence": 0.7,
+      "druggability": 0.6,
+      "status": "Novel"
+    },
+    "VKORC1": {
+      "name": "VKORC1",
+      "evidence": 0.72,
+      "druggability": 0.75,
+      "status": "Repurposing"
+    }
+  },
+  "candidates": [
+    {
+      "name": "Rapamycin",
+      "target": "MTOR",
+      "score": 92,
+      "status": "Approved (Sirolimus)",
+      "indication": "Immunosuppression"
+    },
+    {
+      "name": "Metformin",
+      "target": "AMPK",
+      "score": 85,
+      "status": "Approved (T2D)",
+      "indication": "Diabetes"
+    },
+    {
+      "name": "Resveratrol",
+      "target": "SIRT1",
+      "score": 78,
+      "status": "Dietary supplement",
+      "indication": "Calorie restriction mimetic"
+    },
+    {
+      "name": "Bimagrumab",
+      "target": "MSTN",
+      "score": 88,
+      "status": "Phase 2",
+      "indication": "Sarcopenia"
+    },
+    {
+      "name": "Formoterol",
+      "target": "ADRB2",
+      "score": 75,
+      "status": "Approved (Asthma)",
+      "indication": "Muscle wasting"
+    },
+    {
+      "name": "Espindig",
+      "target": "MSTN",
+      "score": 82,
+      "status": "Preclinical",
+      "indication": "Muscle atrophy"
+    },
+    {
+      "name": "Urolithin A",
+      "target": "MITO",
+      "score": 80,
+      "status": "Clinical trial",
+      "indication": "Mitophagy induction"
+    },
+    {
+      "name": "AKG (Alpha-ketoglutarate)",
+      "target": "EPIGEN",
+      "score": 72,
+      "status": "Dietary supplement",
+      "indication": "Anti-aging"
+    },
+    {
+      "name": "Rapamycin analog (RAD001)",
+      "target": "MTOR",
+      "score": 90,
+      "status": "Approved (Oncology)",
+      "indication": "mTOR inhibition"
+    },
+    {
+      "name": "Metformin + NR",
+      "target": "MULTI",
+      "score": 83,
+      "status": "Combination trial",
+      "indication": "Sarcopenia combo"
+    }
+  ],
+  "admet": {
+    "Rapamycin": {
+      "Absorption": 0.75,
+      "Metabolism": 0.65,
+      "Toxicity": 0.7,
+      "PK": 0.8
+    },
+    "Metformin": {
+      "Absorption": 0.9,
+      "Metabolism": 0.95,
+      "Toxicity": 0.85,
+      "PK": 0.88
+    },
+    "Resveratrol": {
+      "Absorption": 0.6,
+      "Metabolism": 0.7,
+      "Toxicity": 0.8,
+      "PK": 0.65
+    },
+    "Bimagrumab": {
+      "Absorption": 0.3,
+      "Metabolism": 0.95,
+      "Toxicity": 0.9,
+      "PK": 0.75
+    },
+    "Urolithin A": {
+      "Absorption": 0.7,
+      "Metabolism": 0.8,
+      "Toxicity": 0.88,
+      "PK": 0.72
+    }
+  },
+  "aging_atlas": {
+    "senolytics_targets": [
+      "FOXO1",
+      "FOXO3",
+      "MTOR",
+      "p16INK4a"
+    ],
+    "longevity_compounds": [
+      "Rapamycin",
+      "Metformin",
+      "Resveratrol",
+      "Urolithin A"
+    ],
+    "investor_activity": "HIGH - Calico, Unity Biotechnology, Atlas Ventures",
+    "clinical_stage": {
+      "Phase 3": [
+        "Rapamycin (repurposed)",
+        "Metformin (TAME trial)"
+      ],
+      "Phase 2": [
+        "Bimagrumab",
+        "Urolithin A",
+        "Espindig"
+      ],
+      "Phase 1": [
+        "Novel senolytics",
+        "mTORC1 inhibitors"
+      ]
+    },
+    "market_size": "$18B by 2030 (Sarcopenia + Frailty)"
+  },
+  "final_ranking": [
+    {
+      "rank": 1,
+      "name": "Rapamycin",
+      "target": "MTOR",
+      "score": 92,
+      "rationale": "Validated mTORC1 inhibitor, longevity evidence"
+    },
+    {
+      "rank": 2,
+      "name": "Bimagrumab",
+      "target": "MSTN",
+      "score": 88,
+      "rationale": "Myostatin antibody, Phase 2 for sarcopenia"
+    },
+    {
+      "rank": 3,
+      "name": "Metformin",
+      "target": "AMPK",
+      "score": 85,
+      "rationale": "Safe profile, TAME trial for longevity"
+    },
+    {
+      "rank": 4,
+      "name": "Urolithin A",
+      "target": "MITO",
+      "score": 80,
+      "rationale": "Mitophagy inducer, dietary supplement"
+    },
+    {
+      "rank": 5,
+      "name": "Resveratrol",
+      "target": "SIRT1",
+      "score": 78,
+      "rationale": "SIRT1 activator, calorie restriction mimetic"
+    }
+  ]
+}
