@@ -1,0 +1,11 @@
+Gene,name,logFC,pval
+SLC7A11, cystine/glutamate antiporter,1.8,0.001
+GPX4,glutathione peroxidase 4,0.9,0.005
+FSP1,ferroptosis suppressor 1,0.7,0.01
+SLC3A2,4F2hc (SLC7A11 partner),1.2,0.002
+NFE2L2,NRF2 (transcription factor),2.1,0.0005
+KEAP1,KEAP1 (NRF2 regulator),-0.8,0.02
+ATF4,activating transcription factor 4,1.5,0.003
+CHAC1,glutathione degron,2.3,0.001
+SLC7A5,LAT1 (amino acid transporter),1.1,0.008
+SLC38A1,SNAT1,0.6,0.03
