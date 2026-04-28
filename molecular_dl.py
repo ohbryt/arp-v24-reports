@@ -2,12 +2,18 @@
 Part 2: Molecular Deep Learning
 ==============================
 Based on: Nature Machine Intelligence - Molecular deep learning at edge of chemical space (PMID: 42037759)
+DOI: 10.1038/s42256-026-01216-w
 
 Capabilities:
 - Chemical space exploration
 - De novo molecular generation
 - ADMET prediction
 - PROTAC scaffold optimization
+- Unfamiliarity scoring for novel molecule prioritization
+
+Integration:
+- Uses UnfamiliarityScorer to rank scaffolds by novelty
+- Poor reconstruction = High unfamiliarity = Structurally novel (OOD)
 """
 
 import os
@@ -19,6 +25,14 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 import warnings
 warnings.filterwarnings('ignore')
+
+# Import unfamiliarity scorer for novel molecule discovery
+try:
+    from unfamiliarity_scorer import UnfamiliarityScorer, NoveltyAwareMolecularGenerator
+    UNFAMILIARITY_AVAILABLE = True
+except ImportError:
+    UNFAMILIARITY_AVAILABLE = False
+    print("[MolecularDL] Unfamiliarity scorer not available, using basic scoring")
 
 class MolecularDeepLearning:
     """
@@ -63,6 +77,19 @@ class MolecularDeepLearning:
             'optimization_suggestions': self._get_sar_suggestions(),
             'synthetic_routes': self._propose_synthesis()
         }
+        
+        # Add unfamiliarity scoring for novel molecule discovery
+        if UNFAMILIARITY_AVAILABLE:
+            print(f"\n[Molecular DL] Computing unfamiliarity scores...")
+            scorer = UnfamiliarityScorer()
+            scored_scaffolds = scorer.score_scaffolds(
+                results['novel_scaffolds'].get('warheads', [])
+            )
+            results['novel_scaffolds']['scored_by_unfamiliarity'] = scored_scaffolds
+            
+            novel_count = sum(1 for s in scored_scaffolds if s.get('novel', False))
+            highly_novel = sum(1 for s in scored_scaffolds if s.get('highly_novel', False))
+            print(f"  Novel scaffolds: {novel_count}, Highly novel: {highly_novel}")
         
         return results
     
