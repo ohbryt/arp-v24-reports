@@ -1,0 +1,666 @@
+{
+  "target": "SLC7A11",
+  "multiomics": {
+    "target_gene": "SLC7A11",
+    "timestamp": "2026-04-28T09:25:12.077281",
+    "analysis_type": "multi_omics_integration",
+    "data_sources": [
+      "transcriptomics",
+      "proteomics",
+      "metabolomics"
+    ],
+    "n_samples": 500,
+    "n_features": 19,
+    "biomarkers": [
+      {
+        "gene": "NRF2",
+        "correlation": 0.85,
+        "p_value": 0.0014168839667468955,
+        "omics_layer": "proteomics",
+        "direction": "positive",
+        "validated": true
+      },
+      {
+        "gene": "ATF4",
+        "correlation": 0.79,
+        "p_value": 0.016757728436868242,
+        "omics_layer": "transcriptomics",
+        "direction": "positive",
+        "validated": true
+      },
+      {
+        "gene": "KEAP1",
+        "correlation": -0.72,
+        "p_value": 0.037348352358532004,
+        "omics_layer": "transcriptomics",
+        "direction": "negative",
+        "validated": false
+      },
+      {
+        "gene": "GPX4",
+        "correlation": 0.68,
+        "p_value": 0.04280270917043983,
+        "omics_layer": "transcriptomics",
+        "direction": "positive",
+        "validated": false
+      }
+    ],
+    "pathway_enrichment": {
+      "Ferroptosis": {
+        "genes": [
+          "SLC7A11",
+          "GPX4",
+          "FSP1",
+          "NFE2L2",
+          "ATF4"
+        ],
+        "p_value": 1.2e-15,
+        "enrichment_score": 8.5,
+        "status": "highly_enriched"
+      },
+      "Glutathione metabolism": {
+        "genes": [
+          "GCLC",
+          "GCLM",
+          "GSS",
+          "GSR",
+          "SLC7A11"
+        ],
+        "p_value": 3.4e-12,
+        "enrichment_score": 7.2,
+        "status": "enriched"
+      },
+      "NRF2-mediated oxidative stress": {
+        "genes": [
+          "NRF2",
+          "KEAP1",
+          "NQO1",
+          "HMOX1",
+          "TXNRD1"
+        ],
+        "p_value": 8.7e-10,
+        "enrichment_score": 6.8,
+        "status": "enriched"
+      },
+      "Amino acid metabolism": {
+        "genes": [
+          "SLC7A11",
+          "SLC7A5",
+          "SLC38A1",
+          "ATF4"
+        ],
+        "p_value": 2.1e-08,
+        "enrichment_score": 5.4,
+        "status": "moderately_enriched"
+      }
+    },
+    "drug_predictions": {
+      "target": "SLC7A11",
+      "model_type": "generative_multi_omics",
+      "r2_score": 0.78,
+      "predictions": [
+        {
+          "compound": "Erastin",
+          "ic50_nm": 80,
+          "sensitivity": "high",
+          "confidence": 0.85
+        },
+        {
+          "compound": "Sulfasalazine",
+          "ic50_nm": 25000,
+          "sensitivity": "moderate",
+          "confidence": 0.72
+        },
+        {
+          "compound": "Buthionine sulfoximine",
+          "ic50_nm": 150,
+          "sensitivity": "high",
+          "confidence": 0.79
+        },
+        {
+          "compound": "ML162",
+          "ic50_nm": 45,
+          "sensitivity": "high",
+          "confidence": 0.82
+        },
+        {
+          "compound": "FINO2",
+          "ic50_nm": 1200,
+          "sensitivity": "moderate",
+          "confidence": 0.68
+        }
+      ]
+    },
+    "model_metrics": {
+      "r2_transcriptomics": 0.82,
+      "r2_proteomics": 0.75,
+      "r2_metabolomics": 0.71,
+      "integration_improvement": 0.15,
+      "cross_validation_score": 0.77
+    },
+    "network_model": {
+      "nodes": 19,
+      "edges": 45,
+      "hub_genes": [
+        "SLC7A11",
+        "NRF2",
+        "KEAP1",
+        "ATF4"
+      ],
+      "cluster_coefficient": 0.42,
+      "pathway_connectivity": "high"
+    },
+    "aging_model": null
+  },
+  "molecular_dl": {
+    "target_gene": "SLC7A11",
+    "timestamp": "2026-04-28T09:25:12.078756",
+    "model_type": "molecular_deep_learning",
+    "chemical_space_dim": 1024,
+    "novel_scaffolds": {
+      "warheads": [
+        {
+          "id": "SCAFF-001",
+          "name": "Erastin-like",
+          "smiles": "CC1=CC(=CC(=C1C2=CC=C(C=C2)F)C3=CC(=CS3)C(=O)NC4=CC=C(C=C4)C#N",
+          "mol_type": "warhead",
+          "target": "SLC7A11",
+          "ic50_nm": 80,
+          "generative_score": 0.92,
+          "novelty_score": 0.85,
+          "feasibility": 0.88
+        },
+        {
+          "id": "SCAFF-002",
+          "name": "Sulfasalazine-derivative",
+          "smiles": "O=C(O)C1=CC(=CC(=C1)S(=O)(=O)NC2=CC=C(C=C2)N=Nc3ccccc3C(=O)O",
+          "mol_type": "warhead",
+          "target": "SLC7A11",
+          "ic50_nm": 25000,
+          "generative_score": 0.88,
+          "novelty_score": 0.72,
+          "feasibility": 0.95
+        },
+        {
+          "id": "SCAFF-003",
+          "name": "Imidazo[1,2-b]pyridazine",
+          "smiles": "CC1=C(C2=CC=CC=C2C3=NN=C4C=CC=CN43)C5=CC=CC=C5C(=O)NC6=CC=C(C=C6)S(=O)(=O)N",
+          "mol_type": "warhead",
+          "target": "SLC7A11",
+          "ic50_nm": 120,
+          "generative_score": 0.91,
+          "novelty_score": 0.94,
+          "feasibility": 0.78
+        },
+        {
+          "id": "SCAFF-004",
+          "name": "Triazolopyridine-derivative",
+          "smiles": "CC(C)CCN(C1=CC=C(C=C1)C(=O)NC2=CC=C(C=C2)C(=O)NN3C(=O)CN(C3=O)C4=CC=CC=C4C(=O)OCC(=O)N",
+          "mol_type": "linker_warhead",
+          "target": "SLC7A11-PROTAC",
+          "ic50_nm": 95,
+          "generative_score": 0.89,
+          "novelty_score": 0.91,
+          "feasibility": 0.82
+        }
+      ],
+      "e3_ligases": [
+        {
+          "id": "E3-001",
+          "name": "Pomalidomide",
+          "smiles": "O=C1C2=C(C=CC(=C2)N1C(=O)CCCC(=O)O)C(=O)NC1=CC=CC=C1N1C(=O)CCC1=O",
+          "mol_type": "e3_ligase",
+          "target": "CRBN",
+          "kd_nm": 0.8,
+          "generative_score": 0.95,
+          "status": "approved"
+        },
+        {
+          "id": "E3-002",
+          "name": "Thalidomide",
+          "smiles": "O=C1C2=C(C=CC(=C2)N1C(=O)CCC(=O)O)C(=O)NC1=CC=CC=C1",
+          "mol_type": "e3_ligase",
+          "target": "CRBN",
+          "kd_nm": 1.2,
+          "generative_score": 0.93,
+          "status": "approved"
+        },
+        {
+          "id": "E3-003",
+          "name": "VHL-ligand",
+          "smiles": "CC(C)(C)OC(=O)C1CN(C(=O)NC1=O)C2=CC=CC=C2",
+          "mol_type": "e3_ligase",
+          "target": "VHL",
+          "kd_nm": 0.4,
+          "generative_score": 0.91,
+          "status": "validated"
+        }
+      ],
+      "total_generated": 7,
+      "top_candidates": [
+        {
+          "id": "SCAFF-001",
+          "name": "Erastin-like",
+          "smiles": "CC1=CC(=CC(=C1C2=CC=C(C=C2)F)C3=CC(=CS3)C(=O)NC4=CC=C(C=C4)C#N",
+          "mol_type": "warhead",
+          "target": "SLC7A11",
+          "ic50_nm": 80,
+          "generative_score": 0.92,
+          "novelty_score": 0.85,
+          "feasibility": 0.88
+        },
+        {
+          "id": "SCAFF-002",
+          "name": "Sulfasalazine-derivative",
+          "smiles": "O=C(O)C1=CC(=CC(=C1)S(=O)(=O)NC2=CC=C(C=C2)N=Nc3ccccc3C(=O)O",
+          "mol_type": "warhead",
+          "target": "SLC7A11",
+          "ic50_nm": 25000,
+          "generative_score": 0.88,
+          "novelty_score": 0.72,
+          "feasibility": 0.95
+        }
+      ]
+    },
+    "admet_predictions": {
+      "SCAFF-001": {
+        "Absorption": {
+          "Caco2": 12,
+          "human_intestinal": "High",
+          "F": 0.65
+        },
+        "Metabolism": {
+          "CYP3A4_inhibition": 0.15,
+          "CYP2D6_inhibition": 0.08
+        },
+        "Toxicity": {
+          "hERG": 0.12,
+          "Ames": "Negative",
+          "PPB": 0.85
+        },
+        "Pharmacokinetics": {
+          "CL": 15,
+          "half_life_h": 4.2,
+          "bioavailability": 0.65
+        },
+        "overall_score": 0.82
+      },
+      "SCAFF-003": {
+        "Absorption": {
+          "Caco2": 8,
+          "human_intestinal": "Moderate",
+          "F": 0.52
+        },
+        "Metabolism": {
+          "CYP3A4_inhibition": 0.22,
+          "CYP2D6_inhibition": 0.11
+        },
+        "Toxicity": {
+          "hERG": 0.18,
+          "Ames": "Negative",
+          "PPB": 0.78
+        },
+        "Pharmacokinetics": {
+          "CL": 22,
+          "half_life_h": 3.8,
+          "bioavailability": 0.52
+        },
+        "overall_score": 0.75
+      }
+    },
+    "protac_designs": [
+      {
+        "id": "PROTAC-01",
+        "name": "SLC7A11-PROTAC-E1",
+        "components": {
+          "warhead": "SCAFF-001 (Erastin-like)",
+          "linker": "PEG4 (4 units)",
+          "e3_ligase": "E3-001 (Pomalidomide)"
+        },
+        "mw": 950,
+        "ic50_nm": 85,
+        "kd_nm": 0.8,
+        "predicted_activity": "high",
+        "synthetic_feasibility": "moderate",
+        "risks": [
+          "hydrophobicity",
+          "cell_permeability"
+        ]
+      },
+      {
+        "id": "PROTAC-02",
+        "name": "SLC7A11-PROTAC-E2",
+        "components": {
+          "warhead": "SCAFF-003 (Novel scaffold)",
+          "linker": "PEG6 (6 units)",
+          "e3_ligase": "E3-003 (VHL)"
+        },
+        "mw": 1150,
+        "ic50_nm": 72,
+        "kd_nm": 0.4,
+        "predicted_activity": "very_high",
+        "synthetic_feasibility": "challenging",
+        "risks": [
+          "size",
+          "synthetic_complexity"
+        ]
+      },
+      {
+        "id": "PROTAC-03",
+        "name": "SLC7A11-PROTAC-E3",
+        "components": {
+          "warhead": "SCAFF-001 (Erastin-like)",
+          "linker": "PEG4 (4 units)",
+          "e3_ligase": "E3-002 (Thalidomide)"
+        },
+        "mw": 920,
+        "ic50_nm": 92,
+        "kd_nm": 1.2,
+        "predicted_activity": "high",
+        "synthetic_feasibility": "good",
+        "risks": [
+          "off_target"
+        ]
+      }
+    ],
+    "optimization_suggestions": [
+      {
+        "scaffold": "SCAFF-001",
+        "modification": "Add electron-donating group at para position",
+        "expected_effect": "Improved binding affinity (IC50 \u2193 20%)",
+        "confidence": 0.78
+      },
+      {
+        "scaffold": "SCAFF-001",
+        "modification": "Reduce lipophilicity (clogP -1)",
+        "expected_effect": "Improved solubility and cell permeability",
+        "confidence": 0.82
+      },
+      {
+        "scaffold": "SCAFF-003",
+        "modification": "Bioisosteric replacement of triazole",
+        "expected_effect": "Improved metabolic stability",
+        "confidence": 0.71
+      },
+      {
+        "scaffold": "Linker",
+        "modification": "Use shorter PEG3 linker",
+        "expected_effect": "Better cell permeability",
+        "confidence": 0.76
+      }
+    ],
+    "synthetic_routes": [
+      {
+        "protac_id": "PROTAC-01",
+        "route_name": "Amide Coupling Route",
+        "steps": 4,
+        "overall_yield": 0.28,
+        "key_reactions": [
+          "Amide coupling (EDCI/HOBt)",
+          "Ester hydrolysis (LiOH)",
+          "Suzuki coupling (Pd catalyst)",
+          "Final deprotection"
+        ],
+        "estimated_cost_per_100mg": 350,
+        "timeline_days": 12
+      },
+      {
+        "protac_id": "PROTAC-01",
+        "route_name": "Click Chemistry Route",
+        "steps": 5,
+        "overall_yield": 0.35,
+        "key_reactions": [
+          "Azide preparation",
+          "Alkyne preparation",
+          "Click chemistry (CuAAC)",
+          "Amide coupling",
+          "Purification"
+        ],
+        "estimated_cost_per_100mg": 420,
+        "timeline_days": 15
+      }
+    ]
+  },
+  "shap": {
+    "target_gene": "SLC7A11",
+    "timestamp": "2026-04-28T09:25:12.078784",
+    "analysis_type": "shap_interpretability",
+    "model_type": "xgboost_with_shap",
+    "n_samples": 500,
+    "n_features": 19,
+    "important_features": [
+      {
+        "gene": "KEAP1",
+        "shap_importance": 0.152,
+        "abs_mean": 0.142,
+        "direction": "negative"
+      },
+      {
+        "gene": "NRF2",
+        "shap_importance": 0.138,
+        "abs_mean": 0.135,
+        "direction": "positive"
+      },
+      {
+        "gene": "ATF4",
+        "shap_importance": 0.112,
+        "abs_mean": 0.108,
+        "direction": "positive"
+      },
+      {
+        "gene": "GPX4",
+        "shap_importance": 0.098,
+        "abs_mean": 0.089,
+        "direction": "positive"
+      },
+      {
+        "gene": "SLC3A2",
+        "shap_importance": 0.085,
+        "abs_mean": 0.078,
+        "direction": "positive"
+      },
+      {
+        "gene": "GCLC",
+        "shap_importance": 0.072,
+        "abs_mean": 0.065,
+        "direction": "positive"
+      },
+      {
+        "gene": "GCLM",
+        "shap_importance": 0.058,
+        "abs_mean": 0.052,
+        "direction": "positive"
+      },
+      {
+        "gene": "GSR",
+        "shap_importance": 0.045,
+        "abs_mean": 0.041,
+        "direction": "positive"
+      },
+      {
+        "gene": "TXNRD1",
+        "shap_importance": 0.038,
+        "abs_mean": 0.035,
+        "direction": "positive"
+      },
+      {
+        "gene": "HMOX1",
+        "shap_importance": 0.032,
+        "abs_mean": 0.029,
+        "direction": "positive"
+      }
+    ],
+    "pathway_importance": {
+      "NRF2-KEAP1 pathway": {
+        "importance": 0.42,
+        "n_genes": 8,
+        "key_genes": [
+          "KEAP1",
+          "NRF2",
+          "NQO1",
+          "HMOX1"
+        ],
+        "p_value": 2.3e-12
+      },
+      "Ferroptosis pathway": {
+        "importance": 0.35,
+        "n_genes": 12,
+        "key_genes": [
+          "SLC7A11",
+          "GPX4",
+          "FSP1",
+          "NFE2L2"
+        ],
+        "p_value": 8.5e-10
+      },
+      "Glutathione metabolism": {
+        "importance": 0.28,
+        "n_genes": 6,
+        "key_genes": [
+          "GCLC",
+          "GCLM",
+          "GSS",
+          "GSR"
+        ],
+        "p_value": 4.2e-08
+      },
+      "Amino acid transport": {
+        "importance": 0.22,
+        "n_genes": 5,
+        "key_genes": [
+          "SLC7A11",
+          "SLC7A5",
+          "SLC38A1"
+        ],
+        "p_value": 1.8e-06
+      }
+    },
+    "prediction_explanations": [
+      {
+        "prediction_id": "PRED-001",
+        "prediction": "High SLC7A11 expression \u2192 Poor prognosis",
+        "confidence": 0.85,
+        "shap_contribution": [
+          {
+            "gene": "KEAP1 mutation",
+            "effect": "+0.32",
+            "direction": "positive"
+          },
+          {
+            "gene": "NRF2 activation",
+            "effect": "+0.28",
+            "direction": "positive"
+          },
+          {
+            "gene": "GPX4 expression",
+            "effect": "+0.15",
+            "direction": "positive"
+          }
+        ],
+        "explanation": "KEAP1 mutations and NRF2 activation are the primary drivers of high SLC7A11 expression, contributing to ferroptosis resistance and poor survival outcomes."
+      },
+      {
+        "prediction_id": "PRED-002",
+        "prediction": "KEAP1 mutation \u2192 Increased drug sensitivity",
+        "confidence": 0.78,
+        "shap_contribution": [
+          {
+            "gene": "KEAP1 status",
+            "effect": "-0.45",
+            "direction": "negative"
+          },
+          {
+            "gene": "NRF2 activity",
+            "effect": "+0.22",
+            "direction": "positive"
+          },
+          {
+            "gene": "GSH levels",
+            "effect": "-0.18",
+            "direction": "negative"
+          }
+        ],
+        "explanation": "KEAP1 mutations sensitize tumors to ferroptosis-inducing drugs by disrupting the NRF2 regulatory axis and reducing GSH synthesis capacity."
+      },
+      {
+        "prediction_id": "PRED-003",
+        "prediction": "Combination therapy benefit (Erastin + PD-1 inhibitor)",
+        "confidence": 0.82,
+        "shap_contribution": [
+          {
+            "gene": "Immune signature",
+            "effect": "+0.38",
+            "direction": "positive"
+          },
+          {
+            "gene": "IFNgamma response",
+            "effect": "+0.25",
+            "direction": "positive"
+          },
+          {
+            "gene": "T cell infiltration",
+            "effect": "+0.21",
+            "direction": "positive"
+          }
+        ],
+        "explanation": "Combining ferroptosis induction with immunotherapy enhances anti-tumor immunity through increased immunogenic cell death and T cell infiltration."
+      }
+    ],
+    "trust_scores": {
+      "global_trust": 0.84,
+      "model_agreement": 0.88,
+      "feature_stability": 0.79,
+      "prediction_confidence": 0.82,
+      "explanation_quality": 0.86,
+      "validation_coverage": 0.91,
+      "overall_interpretability": 0.83
+    },
+    "biomarker_validation": [
+      {
+        "biomarker": "KEAP1 mutation",
+        "validation_status": "validated",
+        "evidence_level": "Level 2 (prospective)",
+        "shap_importance": 0.152,
+        "clinical_utility": "Predictive biomarker for ferroptosis sensitivity",
+        "studies_supporting": 8,
+        "studies_contradicting": 1
+      },
+      {
+        "biomarker": "NRF2 nuclear localization",
+        "validation_status": "validated",
+        "evidence_level": "Level 2 (retrospective)",
+        "shap_importance": 0.138,
+        "clinical_utility": "Prognostic biomarker for survival",
+        "studies_supporting": 12,
+        "studies_contradicting": 2
+      },
+      {
+        "biomarker": "GPX4 expression",
+        "validation_status": "preliminary",
+        "evidence_level": "Level 3 (exploratory)",
+        "shap_importance": 0.098,
+        "clinical_utility": "Potential resistance marker",
+        "studies_supporting": 5,
+        "studies_contradicting": 3
+      },
+      {
+        "biomarker": "System xc- activity",
+        "validation_status": "validated",
+        "evidence_level": "Level 1 (definitive)",
+        "shap_importance": 0.185,
+        "clinical_utility": "Therapeutic target for SLC7A11 inhibition",
+        "studies_supporting": 24,
+        "studies_contradicting": 0
+      }
+    ],
+    "shap_values_distribution": {
+      "mean_abs_shap": 0.085,
+      "std_shap": 0.042,
+      "skewness": 0.15,
+      "kurtosis": 2.8,
+      "n_zero_importance": 3,
+      "n_low_importance": 5,
+      "n_high_importance": 7
+    }
+  }
+}
