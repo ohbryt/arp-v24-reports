@@ -110,6 +110,83 @@ Grade → Triage → Fix → Verify → Gate Release
 
 ---
 
+## Component 1: The Grader (Details)
+
+### The Trigger and Sampling
+
+```
+Every response triggers POST to grading endpoint
+- Per model sampling (not flat)
+- 10% for dominant model (handles 24x more traffic)
+- 100% for minority/experimental models
+
+Why? Minority models need statistical significance in HOURS, not weeks
+```
+
+### Job 0: The Categorical Router
+
+```
+Before judges see transcript, classifier maps to 12 core domains:
+1. Coding
+2. Research
+3. Data analysis
+4. Task automation
+5. Agent building
+6. Artifact building
+7. Traditional app building
+8. Planning
+9. Writing
+10. Creative work
+11. Conversation
+12. Error recovery
+
+Category-conditioned rubric: good coding ≠ good research criteria
+```
+
+### Three Judges, Three Personas
+
+```
+We run 3 judges from different model families:
+├── Anthropic
+├── OpenAI
+└── Google
+
+Purpose: Reduce self-preference bias
+
+How: Concurrent via AI Gateway → single slow judge doesn't block
+     → Just lowers quorum size for that row
+
+Quality control: Sample verdicts back to humans for calibration
+               → Gap between judge consensus + human review = rubric bug
+```
+
+### Structured Output Schema
+
+```json
+{
+  "reasoning": "2-3 sentences step-by-step rationale",
+  "category": "domain being graded",
+  "quality": "excellent | good | acceptable | poor",
+  "issues": [
+    "incomplete",
+    "hallucination",
+    "tool_misuse",
+    "missed_context",
+    ... (9-item taxonomy)
+  ],
+  "confidence": 0.0 to 1.0
+}
+```
+
+### Categorical Rubric
+
+```
+Each judge sees same transcript but evaluates against category-specific constraints
+→ "Good" is domain-dependent
+```
+
+---
+
 ## Reference
 
 - Author: Peter Pang (@intuitiveml)
@@ -119,4 +196,4 @@ Grade → Triage → Fix → Verify → Gate Release
 ---
 
 *Document: arp-v24/SELF_HEALING_AGENT_HARNESS_2026.md*  
-*Created: 2026-04-29*
+*Updated: 2026-04-29*
