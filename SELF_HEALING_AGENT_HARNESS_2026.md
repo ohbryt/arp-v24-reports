@@ -314,6 +314,92 @@ When you swap foundational model, rewrite core prompt, or give new tool access:
 → Cannot push to 100% and hope
 ```
 
+### The Bridge in Detail
+
+```
+Where Grader + Engineering Pipeline meet
+
+Release gates:
+├── No staging environment
+├── No human approval
+└── No "looks good to me" in PR comment
+
+Major agent change merges → route 10% traffic to new variant
+Grader scores head-to-head vs production baseline (real time)
+```
+
+#### Promotion Ladder
+
+```
+Fail → Abort
+├── Score drops ≥0.15 vs baseline (p < 0.05, min 200 interactions)
+├── OR novel error cluster spike in 10% cohort
+├── → Pipeline aborts
+├── → Traffic flips back to stable
+└── → Linear ticket with regression cohort attached
+
+Hold/Improve → Scale cohort
+├── 5% → 20% → 50% → 100%
+└── Each step gated by statistical test on fresh window
+
+Models prove safety on REAL user traffic
+Blast radius capped by cohort size
+```
+
+---
+
+## The Hard Truths About Running a Harness
+
+### 1. Grade Outcome, Not Trajectory
+
+```
+Early mistake: Penalized "unnecessary" tool calls
+
+Learning: AI often discovers non-linear solutions that look strange but work
+
+→ Grading what agent PRODUCED is more robust
+→ Than micromanaging HOW it got there
+```
+
+### 2. Sample by Model, Not Traffic
+
+```
+Flat sampling → dominant model looks like only model
+→ Under-invest in minority models
+
+→ Sample by model, not by traffic
+```
+
+### 3. Score + Ticket = Dashboard Nobody Looks At
+
+```
+Grader without Engineering Pipeline = worthless
+Engineering Pipeline without Grader = worthless
+
+→ Build BOTH or build NEITHER
+```
+
+---
+
+## The New Standard
+
+```
+Self-healing system isn't a single feature
+It's a CYCLE: grade → triage → fix → verify
+Every component runs on the model's own output
+
+Old way: AI-assisted (bolting Copilot onto same workflow)
+New way: AI-first (fuse eval + QA into one loop)
+
+Competitive advantage: Teams that STOP treating eval and QA as separate
+```
+
+---
+
+## Key Quote
+
+> "We build an agent platform. We test it with an AI jury, ship it on the jury's verdict, and let the jury reopen the case when something regresses."
+
 ---
 
 ## Reference
