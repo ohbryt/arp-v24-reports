@@ -178,11 +178,140 @@ Quality control: Sample verdicts back to humans for calibration
 }
 ```
 
-### Categorical Rubric
+### Mathematical Consensus
 
 ```
-Each judge sees same transcript but evaluates against category-specific constraints
-→ "Good" is domain-dependent
+Quality → 1-4 scale → average across surviving judges
+        ↓
+Continuous metric (3.33 vs 2.66) vs blunt vote
+
+Benefit: Per-model trends visible at SMALLER sample sizes
+
+Self-preference bias handling:
+├── Sonnet grades Sonnet → score can inflate ~0.3
+├── But OpenAI + Google judges flag same issue → bias washed out by quorum
+└── Each verdict persisted: sonnet_quality, gpt_quality, gemini_quality, judge_count
+
+Audit: Engineers can re-weight if any judge drifts
+```
+
+### The Stream
+
+```
+Output: Stream of category-tagged, judge-averaged scores
+        tied to exact messageId
+        ↓
+Feeds everything downstream
+```
+
+---
+
+## Component 2: The Engineering Pipeline
+
+### Six Jobs from Score to Fix
+
+```
+low score = bug report → 6 sequential jobs
+
+Replaces: manual QA (triage, investigation, fix, regression test, sign-off)
+```
+
+#### Job 1: Detect and Triage
+
+```
+Agent pulls poor-quality verdicts + clusters them
+Scoring: 9-dimensional severity engine
+├── User impact
+├── Velocity
+├── Duration
+├── Alarm correlation
+├── Resource pressure
+├── Latency
+├── 4xx rate
+├── Blast radius
+└── Business criticality
+
+Above urgency cutoff → moves forward
+Below → logged for trend tracking
+```
+
+#### Job 2: Investigate
+
+```
+For top 3 clusters:
+├── Walk stack traces through monorepo
+├── Pull CloudWatch logs
+├── Check recent deployments
+├── Query database replica
+└── Assign root cause + evidence bundle
+
+Routes ticket to human with full evidence
+```
+
+#### Job 3: Auto-Fix (Draft PR)
+
+```
+For high-confidence, urgent issues:
+├── Branch code
+├── Write fix
+├── Validate
+└── Submit draft PR
+
+Guardrails:
+├── Max 3 PRs per run (prevent reviewer exhaustion)
+├── .env, .github/, IAM policies → auto-close
+├── Type errors → block submission
+└── Failing tests → block submission
+
+Goal: Fix obvious bugs quickly → humans focus on deep work
+NOT: Fix deep architectural debt
+```
+
+#### Job 4: Verify
+
+```
+For tickets in In Review:
+├── Query CloudWatch last 6 hours
+├── Zero occurrences → close ticket + paste telemetry evidence
+└── Still failing → update with new error count + loop again
+
+Objective proof that fixes work
+Zero manual regression testing
+```
+
+#### Job 5: Re-grade
+
+```
+Closed clusters: 100% sampling for next 24 hours
+Regression detected → reopens ticket + reverts fix
+```
+
+#### Job 6: Report
+
+```
+Nightly digest to Linear + team channel:
+├── Clusters detected
+├── PRs shipped
+├── PRs reverted
+├── Score changes per category
+└── Per-model leaderboard
+
+Dashboard isn't the goal - it's a RECORD of what happened
+```
+
+---
+
+## Component 3: The Bridge
+
+### AI-Gated Grey Rollouts
+
+```
+First two components: Close loop on bugs that ALREADY shipped
+Third component: Close loop on bugs about to SHIP
+
+When you swap foundational model, rewrite core prompt, or give new tool access:
+→ Behavioral risk goes VERTICAL
+→ Cannot push to 100% and hope
 ```
 
 ---
